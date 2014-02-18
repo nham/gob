@@ -1,5 +1,5 @@
-#ifndef BODY_H
-#define BODY_H
+#ifndef WORLD_H
+#define WORLD_H
 
 #include <vector>
 #include "Maths.hpp"

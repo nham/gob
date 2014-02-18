@@ -15,11 +15,10 @@ struct Body {
 
     Vec2 width;
 
+    double mass, invMass;
+    double I, invI;
+
     double friction;
-    double mass;
-    double invMass;
-    float I;
-    float invI;
 
     Body();
     Body(Vec2 const&, double m);

@@ -10,6 +10,7 @@ Body::Body() {
     friction = 0.1;
     mass = std::numeric_limits<double>::max();
     invMass = 0.0;
+
     I = std::numeric_limits<double>::max();
     invI = 0.0;
 }

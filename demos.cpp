@@ -2,7 +2,7 @@
 #include "Body.hpp"
 
 int main() {
-    double dt = 0.01;
+    double dt = 0.001;
     int iters = 10;
     auto g = Vec2(0.0, -9.8);
 
@@ -14,8 +14,8 @@ int main() {
     auto b2 = Body(Vec2(4.0, 4.0), 100.0);
     b2.pos = Vec2(5.0, 5.0);
 
-    world.add(b1);
-    world.add(b2);
+    world.add(&b1);
+    world.add(&b2);
 
-    world.step();
+    world.step(dt);
 }

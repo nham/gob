@@ -14,28 +14,11 @@ struct Vec2 {
     Vec2() {}
     Vec2(double x, double y) : x{x}, y{y} {}
 
-    Vec2 operator -() {
-        return Vec2(-x, -y);
-    }
-
-    void operator += (Vec2 const& vec) {
-        x += vec.x;
-        y += vec.y;
-    }
-
-    void operator -= (Vec2 const& vec) {
-        x -= vec.x;
-        y -= vec.y;
-    }
-
-    void operator *= (double c) {
-        x *= c;
-        y *= c;
-    }
-
-    double mag() {
-        return sqrt(x*x + y*y);
-    }
+    Vec2 operator -();
+    void operator += (Vec2 const& vec);
+    void operator -= (Vec2 const& vec);
+    void operator *= (double c);
+    double mag();
 };
 
 
@@ -54,31 +37,13 @@ struct Mat22 {
 
     Mat22(Vec2 const& r1, Vec2 const& r2) : row1{r1}, row2{r2} {}
 
-    Mat22 transpose() const {
-        return Mat22(Vec2(row1.x, row2.x), Vec2(row1.y, row2.y));
-    }
-
-    Mat22 invert() const {
-        double det = row1.x * row2.y - row1.y * row2.x; // 1/(ad - bc)
-
-        if (det == 0.0)
-            throw std::overflow_error("Divide by zero exception");
-
-        auto new_row1 = Vec2(row2.y, -row1.y);
-        auto new_row2 = Vec2(-row2.x, row1.x);
-        new_row1 *= 1.0 / det;
-        new_row2 *= 1.0 / det;
-
-        return Mat22(new_row1, new_row2);
-    }
+    Mat22 transpose() const;
+    Mat22 invert() const;
 };
 
-double dot(Vec2 const& a, Vec2 const& b) {
-    return a.x * b.x + a.y * b.y;
-}
-
-double cross(Vec2 const& a, Vec2 const& b) {
-    return a.x * b.y - a.y * b.x;
-}
+double dot(Vec2 const& a, Vec2 const& b);
+double cross(Vec2 const& a, Vec2 const& b);
+Vec2 operator *  (double c, Vec2 const& v);
+Vec2 operator + (Vec2 const& u, Vec2 const& v);
 
 #endif
