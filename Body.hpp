@@ -1,6 +1,8 @@
 #ifndef BODY_H
 #define BODY_H
 
+#include "Maths.hpp"
+
 struct Body {
     Vec2 pos;
     double rotation;
@@ -14,10 +16,13 @@ struct Body {
     Vec2 width;
 
     double friction;
-    double m;
+    double mass;
     double invMass;
     float I;
     float invI;
-}
+
+    Body();
+    Body(Vec2 const&, double m);
+};
 
 #endif

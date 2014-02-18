@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <stdexcept>
+#include <limits>
 
 constexpr double pi = 3.1415926535897932384626433832795028842;
 
@@ -15,10 +16,6 @@ struct Vec2 {
 
     Vec2 operator -() {
         return Vec2(-x, -y);
-    }
-
-    Vec2 operator * (double c) {
-        return Vec2(
     }
 
     void operator += (Vec2 const& vec) {
@@ -39,7 +36,7 @@ struct Vec2 {
     double mag() {
         return sqrt(x*x + y*y);
     }
-}
+};
 
 
 struct Mat22 {
@@ -74,7 +71,14 @@ struct Mat22 {
 
         return Mat22(new_row1, new_row2);
     }
+};
 
+double dot(Vec2 const& a, Vec2 const& b) {
+    return a.x * b.x + a.y * b.y;
+}
+
+double cross(Vec2 const& a, Vec2 const& b) {
+    return a.x * b.y - a.y * b.x;
 }
 
 #endif
